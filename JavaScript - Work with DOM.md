@@ -5,7 +5,9 @@ Implement page layout as on the screenshot [http://grab.by/ovI8](http://grab.by/
 
 *JavaScript*:
 No libraries allowed. 
+///
 “Поменять колонки местами”. Each click on this link should switch columns places with each other.
+///
 “Изменить порядок изображений”. Each click should randomize cat images order.
 “Скрыть меню на 3 секунды”. Each click hides top links for 3 sec and shows again.
 
