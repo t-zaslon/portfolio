@@ -1,4 +1,4 @@
-Класс написан с использованием Mootols для слайдера, в котором могут находится как картинки, так и видео(YouTube) .
+Класс написан с использованием Mootols для слайдера, в котором могут находится как картинки, так и видео(YouTube).
 Реализованы настройки видео через API YouTube, такие как остановка видео при прокрутке слайдера, воспроизведение
 просмотра видео с того места, где оно было остановлено.
 
@@ -25,17 +25,20 @@ var SliderFade_class = new Class({Implements: Options,initialize: function(optio
         if (this._getElements().length > 1) {
             this.startAutoScroll()
         }
-    },startAutoScroll: function() {
+    },
+    startAutoScroll: function() {
         this._auto_scroll = setInterval(function() {
             this._controlsClickHandler('right', false)
         }.bind(this), this._slide_time)
-    },reloadAutoScroll: function() {
+    },
+    reloadAutoScroll: function() {
         clearTimeout(this._reload_scroll);
         this._reload_scroll = null;
         this._reload_scroll = setTimeout(function() {
             this.startAutoScroll()
         }.bind(this), this._reload_time)
-    },run: function() {
+    },
+    run: function() {
         var left = this._getControl('left'), right = this._getControl('right');
         left.addEvent('click', function(e) {
             new DOMEvent(e).stop();
@@ -46,7 +49,9 @@ var SliderFade_class = new Class({Implements: Options,initialize: function(optio
             this._controlsClickHandler('right', true)
         }.bind(this));
         return this
-    },_getElements: function() {
+    },
+    //Получение всех элементов слайдера
+    _getElements: function() {
         var that = this, list = [];
         if (this._li_list) {
             $$(this._li_list).each(function(el) {
@@ -66,12 +71,15 @@ var SliderFade_class = new Class({Implements: Options,initialize: function(optio
             })
         }
         return this._elements = list
-    },_getControl: function(direction) {
+    },
+    //Получение элемента управления слайдером (стрелки)
+    _getControl: function(direction) {
         if (this._controls[direction] == null) {
             this._controls[direction] = this._parent.getElement(this.options.controls[direction])
         }
         return this._controls[direction]
-    },_getSelected: function() {
+    },
+    _getSelected: function() {
         var that = this, selected;
         this._elements.each(function(el) {
             if (el.element.getParent().hasClass(that._selected_class)) {
@@ -79,9 +87,11 @@ var SliderFade_class = new Class({Implements: Options,initialize: function(optio
             }
         });
         return selected
-    },_getItem: function(parent_item) {
+    },
+    _getItem: function(parent_item) {
         return parent_item.getElement("." + this._item)
-    },_controlsClickHandler: function(direction, stop_auto_scroll) {
+    },
+    _controlsClickHandler: function(direction, stop_auto_scroll) {
         if (stop_auto_scroll) {
             if (this._auto_scroll) {
                 clearInterval(this._auto_scroll);
@@ -102,7 +112,8 @@ var SliderFade_class = new Class({Implements: Options,initialize: function(optio
                 this._fadeItem(direction)
             }
         }
-    },_fadeItem: function(direction) {
+    },
+    _fadeItem: function(direction) {
         this._trigger = true;
         var that = this, selected_Item = this._getSelected();
         var selected_parent_item = selected_Item.element.getParent();
@@ -116,7 +127,8 @@ var SliderFade_class = new Class({Implements: Options,initialize: function(optio
                 that._trigger = false
             }}).fade('in');
         next_Item.show()
-    },_getSubling: function(direction) {
+    },
+    _getSubling: function(direction) {
         var selected_item = this._getSelected(), current_index = this._elements.indexOf(selected_item), next_item;
         if (selected_item) {
             switch (direction) {
@@ -137,7 +149,8 @@ var SliderFade_class = new Class({Implements: Options,initialize: function(optio
             }
             return next_item
         }
-    },stopAutoScroll: function() {
+    },
+    stopAutoScroll: function() {
         if (this._auto_scroll) {
             clearInterval(this._auto_scroll);
             this._auto_scroll = null
@@ -147,6 +160,7 @@ var SliderFade_class = new Class({Implements: Options,initialize: function(optio
             this._reload_scroll = null
         }
     }});
+ //Базовый класс для элементов слайдера   
 var Item_class = new Class({initialize: function(item_element) {
         this.element = item_element;
         this.duration_hide = 500;
@@ -156,11 +170,13 @@ var Item_class = new Class({initialize: function(item_element) {
     },show: function() {
         this.element.set('tween', {duration: this.duration_show}).fade('in')
     }});
+ //Класс для элемента-картинки
 var ItemImage_class = new Class({Implements: Item_class,initialize: function(item_element) {
         this.element = item_element;
         this.duration_hide = 700;
         this.duration_show = 900
     }});
+ //Класс для элемента-видео   
 var ItemVideo_class = new Class({Implements: [Item_class, Options],initialize: function(options) {
         if (options) {
             this.setOptions(options)
