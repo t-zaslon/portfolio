@@ -186,37 +186,37 @@ var ItemVideo_class = new Class({Implements: [Item_class, Options],initialize: f
  ```   
     
     /////////////////////////////////////////////////////////////////////////////////
-    
+```javascript    
     
     //Инициализация и запуск слайдера для BigPromo 
-			bigPromoSlider = new SliderFade_class({
-				parent: 'bigpromo',//id
-				elements_parent: 'promo-content',//id
-				elements:'.bp-list-i',//class
-				controls: {left: '[name=control-left]', right: '[name=control-right]'},//names
-				item: "bp-item",//class
-				img_name: "bp-img",//name
-				video_name: "bp-video",//name
-				selected_class: 'bp-selected',//class
-				disable_class: {left: 'bp-disable-al', right: 'bp-disable-ar'}//object
-			});
+	bigPromoSlider = new SliderFade_class({
+		parent: 'bigpromo',//id
+		elements_parent: 'promo-content',//id
+		elements:'.bp-list-i',//class
+		controls: {left: '[name=control-left]', right: '[name=control-right]'},//names
+		item: "bp-item",//class
+		img_name: "bp-img",//name
+		video_name: "bp-video",//name
+		selected_class: 'bp-selected',//class
+		disable_class: {left: 'bp-disable-al', right: 'bp-disable-ar'}//object
+	});
 
-			bigPromoSlider.run();
-			//Функция-обработчик события  onStateChange
-			function stopScroll(newState) {
-				//Если видео воспроизводится, запускаем функцию остановки автопрокрутки
-				if (newState == 1) {
+	bigPromoSlider.run();
+	//Функция-обработчик события  onStateChange
+	function stopScroll(newState) {
+		//Если видео воспроизводится, запускаем функцию остановки автопрокрутки
+		if (newState == 1) {
 
-					bigPromoSlider.stopAutoScroll();
-				}
-			}
+			bigPromoSlider.stopAutoScroll();
+		}
+	}
 
-			function onYouTubePlayerReady(playerid) {
+	function onYouTubePlayerReady(playerid) {
 
-				//Подписываем плеер на событие*
-				var ytplayer = document.getElementById(playerid);
-				ytplayer.addEventListener('onStateChange', 'stopScroll');
-			}
-    
+		//Подписываем плеер на событие*
+		var ytplayer = document.getElementById(playerid);
+		ytplayer.addEventListener('onStateChange', 'stopScroll');
+	}
+ ```
     
     
