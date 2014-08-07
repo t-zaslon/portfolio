@@ -1,7 +1,7 @@
 Написать функцию contains. Если элементы массива what содержатся в массиве where, функция должна возвращать true
 иначе false. Пустой массив является подмножеством любого массива.
 
-
+```javascript
 function contains(where, what) {
 	 
   if (what.length === 0) {
@@ -18,3 +18,4 @@ function contains(where, what) {
   }
   return true;
 }
+```
