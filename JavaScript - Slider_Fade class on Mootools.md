@@ -3,7 +3,7 @@
 просмотра видео с того места, где оно было остановлено.
 
 Слайдер работает на сайте [http://events.owox.ua/conf/2014/](http://events.owox.ua/conf/2014/)
-
+```
 var SliderFade_class = new Class({Implements: Options,initialize: function(options) {
         if (options) {
             this.setOptions(options)
@@ -183,7 +183,7 @@ var ItemVideo_class = new Class({Implements: [Item_class, Options],initialize: f
         this.player = player
     }});
     
-    
+ ```   
     
     /////////////////////////////////////////////////////////////////////////////////
     
