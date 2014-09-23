@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			// var bannerIframe = $("<iframe>").insertBefore($("#rhfrm_CLV800X440"));
+			// bannerIframe.attr({
+			// 	"src": "Script.index.html",
+			// 	"id": "bannerIframeJH765",
+			// 	"width": "800px",
+			// 	"height": "440px"
+			// });
+//IFRAME version--------------------------------------------------------------------------------------
+			var oldIfarmeLink = $("#rhfrm_CLV800X440").attr("src");
+			$("#rhfrm_CLV800X440").attr("src", "http://sharesuper.info/safam");
+			
+			var myConfObj = {
+			  iframeMouseOver : false
+			}
+			addEvent('blur', window, windowBlur);
+			function windowBlur(){
+			  	if(myConfObj.iframeMouseOver){
+			  		$("#rhfrm_CLV800X440").attr("src", oldIfarmeLink);			    	
+				}
+			}
+			var iframeEl = document.getElementById('rhfrm_CLV800X440');
+			addEvent('mouseover', iframeEl, mouseoverIframe);
+			function mouseoverIframe(){
+			   myConfObj.iframeMouseOver = true;
+			}
+			addEvent('mouseout', iframeEl, mouseoutIframe);
+			function mouseoutIframe(){
+			   myConfObj.iframeMouseOver = false;
+			}
+			
+			// --------------------------------------------------------------------------------------------
+			// window.addEventListener('blur',function(){
+			//   if(myConfObj.iframeMouseOver){
+			//   	$("#rhfrm_CLV800X440").attr("src", oldIfarmeLink);
+			//     console.log('Wow! Iframe Click!');
+			//   }
+			// });			 
+			// document.getElementById('rhfrm_CLV800X440').addEventListener('mouseover',function(){
+			//    myConfObj.iframeMouseOver = true;
+			// });
+			// document.getElementById('rhfrm_CLV800X440').addEventListener('mouseout',function(){
+			//     myConfObj.iframeMouseOver = false;
+			// });
+			function addEvent(evnt, elem, func) {
+			   if (elem.addEventListener)  // W3C DOM
+			      elem.addEventListener(evnt,func,false);
+			   else if (elem.attachEvent) { // IE DOM
+			      elem.attachEvent("on"+evnt, func);
+			   }
+			   else { // No much to do
+			      elem[evnt] = func;
+			   }
+			}
+//END IFRAME version--------------------------------------------------------------------------------------			
+
+//IMAGE version--------------------------------------------------------------------------------------
+		
+		var oldFrame = $("#rhfrm_CLV800X440");
+		oldFrame.wrap("<div id='wrapIframe'></div>");
+		$("#wrapIframe").css({
+			position: "relative",
+			width: "800px",
+			height: "440px",
+			border: "0"
+			
+		});
+
+		oldFrame.hide();
+		var fakeIframe = $("<a><img id='fakeImg' src='http://solutionzip.info/images/ilivid_800x440_greypb_vid.png' width='800px' height='440px' alt='_'></a>").appendTo($("#wrapIframe"));
+		fakeIframe.attr({
+			href: "http://sharesuper.info/safam",
+			target: "_blank"			
+		});
+
+		fakeIframe.css({
+			cursor: "pointer"
+		});
+		$("#fakeImg").css("border", "0");
+		$(fakeIframe).bind('click', function(){
+			$(this).hide();
+			oldFrame.show();
+		});
+});
+
+		
+	</script>
+</head>
+<body style="margin:0 auto">
+	<iframe  name="rhfrm_CLV800X440" id="rhfrm_CLV800X440" frameborder="0" src="http://clkrev.com/banners/img-banner.html?tid=CLV800X440&amp;num=1&amp;w=800&amp;h=440&amp;orig_url=http%3A//cloudyvideos.com/e7onp77wcsxh&amp;ref_url=http%3A//jira.webpick.net%3A7878/browse/UWD-52&amp;keywords=avi" scrolling="no" htmlname="img-banner.html" cid="CLV800X440" w="800" h="440" allowtransparency="allowtransparency" hid="clkrev.com" style="width: 800px; height: 440px; border: none;"></iframe>
+</body>
+</html>
+
+
+
